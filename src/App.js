@@ -11,9 +11,11 @@ function App() {
   return (
     <div className="App">
         <h1>Navbar</h1>
-        <Menue />
+     
      <BrowserRouter>
+         <Menue />
      <Routes>
+     
             {/* <Route path="/hook" element={<hookPractice/>}></Route> */}
             <Route path="/page1" element={<Page1/>}></Route>
             <Route path="/page2" element={<Page2/>}></Route>
