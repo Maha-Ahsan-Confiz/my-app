@@ -11,7 +11,8 @@ function Page1() {
   const [lists,setList]=useState(initializeList)
   
   const [inputField,setInputField]=useState('')
-
+   const [flag,setflag]=useState(false)
+  
   const onChange=event => setInputField(event.target.value)
 
   const deleting = (a) => {
@@ -23,10 +24,17 @@ function Page1() {
   function addData () {
     console.log("Adding Data",inputField)
     setInputField('')
-    const newList=lists.concat({name:inputField,id:uuidv4()})
+    if (inputField !=''){
+const newList=lists.concat({name:inputField,id:uuidv4()})
     setList(newList);
 
     console.log(newList)
+     setflag(false)
+    }
+    else{
+      setflag(true)
+    }
+    
     
   }
 
@@ -34,7 +42,9 @@ function Page1() {
     <div>
       <h1>Welcome to Page1!!!</h1>
       <input type="text" className="InputField" onChange={onChange} />
+ 
       <button onClick={addData} className="AddItem">Add</button>
+           {flag && <p className="error">Enter something</p>}
      {
       lists.map(l => <h3 className="listitems">{l.name}<button className="Delete" onClick={() => deleting(l)}>Delete</button></h3>)
      }
